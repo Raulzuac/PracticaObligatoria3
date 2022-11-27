@@ -5,6 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f5eb4b67-6c13-485c-a760-2f39c7899fea" name="Changes" comment="">
+<<<<<<< HEAD
+=======
+      <change afterPath="$PROJECT_DIR$/src/Media/Admin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Media/Direccion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Media/FernanByB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Media/Propietario.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Media/Reserva.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Media/Usuario.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Media/Vivienda.java" afterDir="false" />
+>>>>>>> raul
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Media/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Media/Admin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Media/Direccion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Media/Direccion.java" afterDir="false" />
