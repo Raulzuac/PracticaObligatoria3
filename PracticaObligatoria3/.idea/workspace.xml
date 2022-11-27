@@ -5,34 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f5eb4b67-6c13-485c-a760-2f39c7899fea" name="Changes" comment="">
-<<<<<<< HEAD
-=======
-      <change afterPath="$PROJECT_DIR$/src/Media/Admin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Media/Direccion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Media/FernanByB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Media/Propietario.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Media/Reserva.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Media/Usuario.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Media/Vivienda.java" afterDir="false" />
->>>>>>> raul
+      <change afterPath="$PROJECT_DIR$/src/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Media/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Media/Admin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Media/Direccion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Media/Direccion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Media/Propietario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Media/Propietario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Media/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Media/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Media/Vivienda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Media/Vivienda.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -40,39 +23,28 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2HrspEQm9aG3ZD6RTXpNc22hsdh" />
+  <component name="ProjectId" id="2I9EpwgUUt7mxTp3iROqdqQNpcW" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/raulz/Desktop/Ejerciciostema3&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/raulz/Desktop/PracticaObligatoria3"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f5eb4b67-6c13-485c-a760-2f39c7899fea" name="Changes" comment="" />
-      <created>1669054719281</created>
+      <changelist id="02521a02-cef8-413d-bed4-9b329aa2f5fd" name="Changes" comment="" />
+      <created>1669585587622</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1669054719281</updated>
+      <updated>1669585587622</updated>
     </task>
     <servers />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
 </project>
