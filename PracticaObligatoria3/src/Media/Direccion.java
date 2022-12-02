@@ -6,5 +6,4 @@ public class Direccion {
     int portal;
     int piso;
     String puerta;
-
 }
