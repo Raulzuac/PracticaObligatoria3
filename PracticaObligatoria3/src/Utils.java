@@ -1,3 +1,5 @@
+import Media.FernanByB;
+
 public class Utils {
     public static String menuLogin(){
         return """
@@ -10,19 +12,22 @@ public class Utils {
                 ╰────────────────────────────────────────────╯
                 """;
     }
-    public static String menu(int n){
-        switch (n){
-            case 1:{
-                return """
+    public static String menu(String n, FernanByB f){
+        char c=n.charAt(0);
+        switch (c){
+            case '3':{
+                System.out.printf("""
                         ╭────────────────────────────────────────────╮
-                        │                                            │
-                        │              Menu de usuario               │
-                        │                                            │
+                                                                    
+                          Menu de usuario               
+                          Bienvenido: %s
+                            
+                                                                   
                         ╰────────────────────────────────────────────╯
-                        """;
+                        """,f.nameById(n));
 
             }
-            case 2:{
+            case '2':{
                 return """
                         ╭────────────────────────────────────────────╮
                         │                                            │
@@ -32,7 +37,7 @@ public class Utils {
                         """;
 
             }
-            case 3:{
+            case '1':{
                 return """
                         ╭────────────────────────────────────────────╮
                         │                                            │
