@@ -25,4 +25,8 @@ public class Direccion {
         this.numero=numero;
         this.casa=true;
     }
+
+    public String getLocalidad() {
+        return localidad;
+    }
 }

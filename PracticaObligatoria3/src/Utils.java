@@ -1,6 +1,29 @@
 import Media.FernanByB;
 
+import java.util.Scanner;
+
 public class Utils {
+    public static void usuariosLlenos(){
+        System.out.println("No se ha podido crear el usuario porque ya se ha alcanzado el máximo de usuarios." +
+                "\nPulsa ENTER para continuar ");
+        new Scanner(System.in).nextLine();
+    }
+    public static void propietariosLlenos(){
+        System.out.println("No se ha podido crear el propietario porque se ha alcanzado el máximo de propietarios." +
+                "\nPulsa ENTER para continuar.");
+        new Scanner(System.in).nextLine();
+
+    }
+    public static void adminLlenos(){
+        System.out.println("No se ha podido crear el admin porque se ha alcanzado el máximo de administradores.\n" +
+                "Pulsa ENTER para continuar.");
+        new Scanner(System.in).nextLine();
+    }
+    public static void pisosLlenos(){
+        System.out.println("No se ha podido crear la vivienda porque este propietario ya tiene el máximo de viviendas disponibles.\n" +
+                "Pulsa ENTER para continuar.");
+        new Scanner(System.in).nextLine();
+    }
     public static String menuLogin(){
         return """
                 ╭────────────────────────────────────────────╮

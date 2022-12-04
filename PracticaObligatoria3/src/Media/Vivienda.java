@@ -1,5 +1,7 @@
 package Media;
 
+import java.time.LocalDate;
+
 public class Vivienda {
     //Atributos
     private String nombre;
@@ -20,5 +22,28 @@ public class Vivienda {
         this.direccion=new Direccion(localidad,calle,numero,portal,piso,puerta);
         this.id=numViviendas;
         numViviendas++;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+    public String getLocalidad(){
+        return this.direccion.getLocalidad();
+    }
+
+    public Reserva getReserva1() {
+        return reserva1;
+    }
+
+    public void setReserva1(LocalDate fini,LocalDate ffin,Vivienda v) {
+        this.reserva1 = new Reserva(fini,ffin,v);
+    }
+
+    public Reserva getReserva2() {
+        return reserva2;
+    }
+
+    public void setReserva2(LocalDate fini,LocalDate ffin,Vivienda v) {
+        this.reserva2 = new Reserva(fini,ffin,v);
     }
 }
