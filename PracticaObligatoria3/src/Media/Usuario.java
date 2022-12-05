@@ -1,5 +1,7 @@
 package Media;
 
+import java.time.LocalDate;
+
 public class Usuario {
     //Atributos
     private String id;
@@ -31,6 +33,20 @@ public class Usuario {
         }
         reserva2=r;
         return true;
+    }
+    public boolean puedeReservar(){
+        if (reserva1==null || reserva2==null)return true;
+        return false;
+    }
+    public boolean insertarReserva(Reserva r){
+        if (this.reserva1==null){
+            reserva1=r;
+            return true;
+        }
+        if (this.reserva2==null){
+            reserva2=r;
+        }
+        return false;
     }
 
     public static int getNumUsuarios() {

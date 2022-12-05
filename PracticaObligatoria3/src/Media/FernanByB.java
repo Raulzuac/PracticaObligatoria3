@@ -132,19 +132,20 @@ public class FernanByB {
         return encontradas;
     }
 
-    public boolean reservar(Vivienda v, int diai, int mesi, int yeari,int diaf,int mesf,int yearf) {
-        LocalDate l1=LocalDate.of(yeari,mesi,diai);
-        LocalDate l2=LocalDate.of(yearf,mesf,diaf);
-        if (v.getReserva1()==null && v.getReserva2()==null){
-            v.setReserva1(l1,l2,v);
+    public boolean reservar(Usuario u,Vivienda v, int diai, int mesi, int yeari,int diaf,int mesf,int yearf){
+        if (u.puedeReservar() && v.puedeReservar()){
+            LocalDate fini=LocalDate.of(yeari,mesi,diai);
+            LocalDate ffin=LocalDate.of(yearf,mesf,diaf);
+            Reserva r= new Reserva(fini,ffin,v);
+            u.insertarReserva(r);
+            v.setReserva(r);
             return true;
         }
-        if (v.getReserva2()==null){
-            if (!v.getReserva1().coincide(l1,l2)){
-                v.setReserva2(l1,l2,v);
-                return true;
-            }
-        }
         return false;
+    }
+    public Vivienda getviviendaById(int id){
+        if (vivienda1.getId()==id)return vivienda1;
+        if (vivienda2.getId()==id)return vivienda2;
+        return null;
     }
 }

@@ -24,6 +24,11 @@ public class Utils {
                 "Pulsa ENTER para continuar.");
         new Scanner(System.in).nextLine();
     }
+    public static void noPudoReservar(){
+        System.out.println("No se ha podido gestionar la reserva\n" +
+                "Pulsa ENTER para continuar.");
+        new Scanner(System.in).nextLine();
+    }
     public static String menuLogin(){
         return """
                 ╭────────────────────────────────────────────╮

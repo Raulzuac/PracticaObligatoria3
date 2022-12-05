@@ -35,15 +35,27 @@ public class Vivienda {
         return reserva1;
     }
 
-    public void setReserva1(LocalDate fini,LocalDate ffin,Vivienda v) {
-        this.reserva1 = new Reserva(fini,ffin,v);
+    public boolean setReserva(Reserva r){
+        if (this.reserva1==null){
+            this.reserva1=r;
+            return true;
+        }
+        if (this.reserva2==null){
+            this.reserva2=r;
+            return true;
+        }
+        return false;
+    }
+    public boolean puedeReservar(){
+        if (reserva1==null || reserva2==null)return true;
+        return false;
     }
 
     public Reserva getReserva2() {
         return reserva2;
     }
 
-    public void setReserva2(LocalDate fini,LocalDate ffin,Vivienda v) {
-        this.reserva2 = new Reserva(fini,ffin,v);
+    public int getId() {
+        return id;
     }
 }

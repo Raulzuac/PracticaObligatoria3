@@ -14,10 +14,15 @@ public class PracticaObligatoria3 {
         if (!f.nuevoPropietario("Jose","jose","pass")) Utils.propietariosLlenos();
         if (!f.nuevoPropietario("Jesus","jesus","pass")) Utils.propietariosLlenos();
         if (!f.nuevoAdmin("Admin","admin","pass")) Utils.adminLlenos();
-        if (!f.nuevaVivienda("20","Pisito en la playa","Torremolinos","nose",10,1,2,"b"))
+        if (!f.nuevaVivienda("20","Pisito en la playa","Torremolinos",
+                "nose",10,1,2,"b"))
             Utils.pisosLlenos();
-        if (!f.nuevaVivienda("21","Casa en la montaña","Torreperojil","La unica que hay",1))
+        if (!f.nuevaVivienda("21","Casa en la montaña","Torreperojil",
+                "La unica que hay",1))
             Utils.pisosLlenos();
         LocalDate l=LocalDate.now();
+        if (!f.reservar(f.getUsuarioById("30"),f.getviviendaById(0),10,10,2022,12,10,2022))
+            Utils.noPudoReservar();
+        
     }
 }
