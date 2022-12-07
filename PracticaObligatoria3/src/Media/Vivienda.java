@@ -58,4 +58,13 @@ public class Vivienda {
     public int getId() {
         return id;
     }
+
+    @Override
+    public String toString() {
+        return """
+                ╭────────────────────────────────────────────╮
+                 Nombre de la vivienda:%s
+                 %s
+                """.formatted(nombre,direccion);
+    }
 }

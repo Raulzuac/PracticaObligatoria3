@@ -89,11 +89,11 @@ public class FernanByB {
     }
 
     public String login(String user, String pass) {
-        if (usuario1.loginUsuario(user, pass)) return usuario1.getId();
-        if (usuario2.loginUsuario(user, pass)) return usuario2.getId();
-        if (propietario1.loginPropietario(user, pass)) return propietario1.getId();
-        if (propietario2.loginPropietario(user, pass)) return propietario2.getId();
-        if (admin.loginadmin(user, pass)) return admin.getId();
+        if (usuario1!=null && usuario1.loginUsuario(user, pass)) return usuario1.getId();
+        if (usuario2!=null && usuario2.loginUsuario(user, pass)) return usuario2.getId();
+        if (propietario1!=null && propietario1.loginPropietario(user, pass)) return propietario1.getId();
+        if (propietario2!=null && propietario2.loginPropietario(user, pass)) return propietario2.getId();
+        if (admin!=null && admin.loginadmin(user, pass)) return admin.getId();
         return "";
     }
 
@@ -147,5 +147,22 @@ public class FernanByB {
         if (vivienda1.getId()==id)return vivienda1;
         if (vivienda2.getId()==id)return vivienda2;
         return null;
+    }
+    public boolean usuariosllenos(){
+        return usuario1!=null && usuario2!=null;
+    }
+    public boolean propietariosLlenos(){
+        return propietario1!=null && propietario2!=null;
+    }
+    public boolean adminLlenos(){
+        return admin!=null;
+    }
+
+    public Vivienda getVivienda1() {
+        return vivienda1;
+    }
+
+    public Vivienda getVivienda2() {
+        return vivienda2;
     }
 }

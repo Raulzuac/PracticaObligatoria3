@@ -29,4 +29,23 @@ public class Direccion {
     public String getLocalidad() {
         return localidad;
     }
+
+    @Override
+    public String toString() {
+        if (casa){
+            return """
+                 Localidad: %s
+                 Calle: %s
+                 Numero: %d
+                """.formatted(localidad,calle,numero);
+        }
+        return """
+                 Localidad: %s
+                 Calle: %s
+                 Numero: %d
+                 Portal: %d
+                 Piso: %d
+                 Puerta: %s
+                """.formatted(localidad,calle,numero,portal,piso,puerta);
+    }
 }
