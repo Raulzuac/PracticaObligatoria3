@@ -41,4 +41,15 @@ public class Propietario {
     public void setVivienda(Vivienda vivienda) {
         this.vivienda = vivienda;
     }
+
+    @Override
+    public String toString() {
+        return String.format("""
+                ╭────────────────────────────────────────────╮
+                 Nombre:%s
+                 Usuario:%s
+                 Pass:%s 
+                ╰────────────────────────────────────────────╯
+                """,nombre,user,pass);
+    }
 }

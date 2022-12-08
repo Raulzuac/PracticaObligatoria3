@@ -34,6 +34,7 @@ public class Vivienda {
     public Reserva getReserva1() {
         return reserva1;
     }
+    public boolean reservable(){return reserva1==null||reserva2==null;}
 
     public boolean setReserva(Reserva r){
         if (this.reserva1==null){
@@ -55,8 +56,12 @@ public class Vivienda {
         return reserva2;
     }
 
+
     public int getId() {
         return id;
+    }
+    public void modificaVivienda(String nombre){
+         this.nombre=nombre;
     }
 
     @Override
@@ -65,6 +70,7 @@ public class Vivienda {
                 ╭────────────────────────────────────────────╮
                  Nombre de la vivienda:%s
                  %s
+                ╰────────────────────────────────────────────╯
                 """.formatted(nombre,direccion);
     }
 }

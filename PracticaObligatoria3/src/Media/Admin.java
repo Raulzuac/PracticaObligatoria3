@@ -26,5 +26,20 @@ public class Admin {
     public String getNombre() {
         return nombre;
     }
+    public void modificaAdmin(String nombre,String usuario,String clave){
+        this.nombre=nombre;
+        this.user=usuario;
+        this.pass=clave;
+    }
 
+    @Override
+    public String toString() {
+        return String.format("""
+                ╭────────────────────────────────────────────╮
+                 Nombre:%s
+                 Usuario:%s
+                 Pass:%s 
+                ╰────────────────────────────────────────────╯
+                """,nombre,user,pass);
+    }
 }

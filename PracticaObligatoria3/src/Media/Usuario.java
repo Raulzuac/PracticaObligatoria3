@@ -21,6 +21,9 @@ public class Usuario {
         this.reserva2=null;
         numUsuarios++;
     }
+    public Usuario(String nombre){
+        this.nombre=nombre;
+    }
     //Métodos
     public boolean loginUsuario(String user,String pass){
         return this.user.equals(user) && this.pass.equals(pass);
@@ -59,5 +62,16 @@ public class Usuario {
 
     public String getNombre() {
         return this.nombre;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("""
+                ╭────────────────────────────────────────────╮
+                 Nombre:%s
+                 Usuario:%s
+                 Pass:%s 
+                ╰────────────────────────────────────────────╯
+                """,nombre,user,pass);
     }
 }

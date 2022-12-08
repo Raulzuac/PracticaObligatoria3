@@ -9,13 +9,15 @@ public class Reserva {
     private LocalDate fini;
     private LocalDate ffin;
     private Vivienda vivienda;
+    private Usuario usuario;
     private static int numReservas=0;
     //Constructores
-    public Reserva(LocalDate fini,LocalDate ffin,Vivienda vivienda){
+    public Reserva(LocalDate fini,LocalDate ffin,Vivienda vivienda,Usuario u){
         this.fini=fini;
         this.ffin=ffin;
         this.id=numReservas;
         this.vivienda= vivienda;
+        this.usuario=u;
         numReservas++;
     }
     public boolean coincide(LocalDate l1, LocalDate l2){
@@ -26,6 +28,6 @@ public class Reserva {
     }
     @Override
     public String toString() {
-        return "Reserva de la vivienda "+vivienda.getNombre()+" desde la fecha: "+fini.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))+" hasta la fecha: "+ffin.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        return "Reserva de la vivienda "+vivienda.getNombre()+",por "+usuario.getNombre()+" desde la fecha: "+fini.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))+" hasta la fecha: "+ffin.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
     }
 }

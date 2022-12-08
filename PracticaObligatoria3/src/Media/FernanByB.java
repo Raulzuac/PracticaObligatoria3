@@ -117,6 +117,10 @@ public class FernanByB {
         if (propietario2.getId().equals(id)) return propietario2;
         return null;
     }
+    public Admin getAdminById(String id){
+        if (admin!=null && admin.getId().equals(id))return admin;
+        return null;
+    }
 
     public int buscarVivienda(String localidad) {
         int encontradas = 0;
@@ -136,7 +140,7 @@ public class FernanByB {
         if (u.puedeReservar() && v.puedeReservar()){
             LocalDate fini=LocalDate.of(yeari,mesi,diai);
             LocalDate ffin=LocalDate.of(yearf,mesf,diaf);
-            Reserva r= new Reserva(fini,ffin,v);
+            Reserva r= new Reserva(fini,ffin,v,u);
             u.insertarReserva(r);
             v.setReserva(r);
             return true;
@@ -164,5 +168,13 @@ public class FernanByB {
 
     public Vivienda getVivienda2() {
         return vivienda2;
+    }
+
+    public Usuario getUsuario1() {
+        return usuario1;
+    }
+
+    public Usuario getUsuario2() {
+        return usuario2;
     }
 }

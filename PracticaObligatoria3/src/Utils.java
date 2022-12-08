@@ -60,68 +60,8 @@ public class Utils {
                 ╰────────────────────────────────────────────╯
                 """);
     }
-    public static void opcionNoValida(){
-        System.out.println("Opcion no valida, pulsa ENTER para volver al menú principal");
-        espearaENTER();
-    }
-    public static String loggin(FernanByB f){
-        Scanner s=new Scanner(System.in);
-        Utils.menuLogin();
-        System.out.print("Usuario: ");
-        String user = s.nextLine();
-        System.out.print("Clave: ");
-        String clave = s.nextLine();
-        String logueado = f.login(user, clave);
-        if (logueado.equals("")) {
-            Utils.falloLogin();
-            Utils.espearaENTER();
-        }
-        return logueado;
-    }
-    public static void registraUsuario(FernanByB f){
-        Scanner s=new Scanner(System.in);
-        if (!f.usuariosllenos()){
-            System.out.print("Inserta tu nombre: ");
-            String nombre=s.nextLine();
-            System.out.println("Inserta tu usuario: ");
-            String usuario=s.nextLine();
-            System.out.println("Inserta tu clave: ");
-            String pass=s.nextLine();
-            if (!f.nuevoUsuario(nombre,usuario,pass)) usuariosLlenos();
-        }else usuariosLlenos();
-    }
-    public static void registrarPropietario(FernanByB f){
-        Scanner s=new Scanner(System.in);
-        if (!f.propietariosLlenos()){
-            System.out.print("Inserta tu nombre: ");
-            String nombre=s.nextLine();
-            System.out.print("Inserta tu usuario: ");
-            String usuario=s.nextLine();
-            System.out.println("Inserta tu clave: ");
-            String clave=s.nextLine();
-            if (!f.nuevoPropietario(nombre,usuario,clave))propietariosLlenos();
-        }else propietariosLlenos();
-    }
-    public static void registrarAdministrador(FernanByB f){
-        Scanner s= new Scanner(System.in);
-        if (!f.adminLlenos()) {
-            System.out.print("Inserta la clave para poder crear un administrador: ");
-            if (!s.nextLine().equals("aguacate")){
-                System.out.println("La clave es incorrecta, volviendo al menú de inicio");
-                espearaENTER();
-            }else {
-                System.out.print("Inserta tu nombre:");
-                String nombre=s.nextLine();
-                System.out.print("Inserta tu usuario: ");
-                String usuario=s.nextLine();
-                System.out.println("Inserta tu clave");
-                String clave=s.nextLine();
-                if (!f.nuevoAdmin(nombre,usuario,clave))adminLlenos();
-            }
-        }else adminLlenos();
-    }
-    public static void falloLogin() {
-        System.out.println("""
+    public static String falloLogin() {
+        return ("""
                 ╭────────────────────────────────────────────╮
                 │                                            │
                 │         Credenciales incorrectas,          │
@@ -131,12 +71,11 @@ public class Utils {
                 """);
     }
 
-    public static void menu(String n, FernanByB f,boolean salida) {
+    public static String menu(String n, FernanByB f) {
         char c = n.charAt(0);
-        Scanner s=new Scanner(System.in);
         switch (c) {
             case '3': {
-                System.out.printf("""
+                return String.format("""
                         ╭────────────────────────────────────────────╮
                                                                     
                           Menu de usuario
@@ -151,30 +90,9 @@ public class Utils {
                                                                    
                         ╰────────────────────────────────────────────╯
                         """, f.nameById(n));
-                switch (s.nextLine()){
-                    case "1":{
-                        System.out.println("Inserta la localidad en la que quieres buscar alojamientos");
-                        String localidad=s.nextLine();
-                        int viviendas=f.buscarVivienda(localidad);
-                        switch (viviendas){
-                            case 1:{
-                                System.out.println(f.getVivienda1());
-                                break;
-                            }
-                            case 2:
-                                System.out.println(f.getVivienda2());
-                                break;
-                            case 3:
-
-                        }
-                        break;
-                    }
-                }
-                break;
-
             }
             case '2': {
-                System.out.printf("""
+                return String.format("""
                         ╭────────────────────────────────────────────╮
                                                                     
                           Menu de propietario
@@ -189,11 +107,9 @@ public class Utils {
                                                                    
                         ╰────────────────────────────────────────────╯
                         """, f.nameById(n));
-                break;
-
             }
             case '1': {
-                System.out.printf("""
+                return String.format("""
                         ╭────────────────────────────────────────────╮
                                                                     
                           Menu de admin
@@ -208,9 +124,8 @@ public class Utils {
                                                                    
                         ╰────────────────────────────────────────────╯
                         """, f.nameById(n));
-                break;
-
             }
+            default:return "";
         }
     }
 }
