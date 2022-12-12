@@ -70,6 +70,16 @@ public class Utils {
                 ╰────────────────────────────────────────────╯
                 """);
     }
+    public static void espera(){
+        for (int i = 0; i < 3; i++) {
+            try {
+                Thread.sleep(300);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            System.out.print(".");
+        }
+    }
 
     public static String menu(String n, FernanByB f) {
         char c = n.charAt(0);

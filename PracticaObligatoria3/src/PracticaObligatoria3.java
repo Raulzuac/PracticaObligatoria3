@@ -1,8 +1,11 @@
 import Media.FernanByB;
+import Media.Reserva;
 import Media.Usuario;
+import Media.Vivienda;
 import jdk.jshell.execution.Util;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class PracticaObligatoria3 {
@@ -21,10 +24,10 @@ public class PracticaObligatoria3 {
         if (!f.nuevoPropietario("Jesus", "jesus", "pass")) Utils.propietariosLlenos();
         if (!f.nuevoAdmin("Admin", "admin", "pass")) Utils.adminLlenos();
         if (!f.nuevaVivienda("20", "Pisito en la playa", "Torremolinos",
-                "nose", 10, 1, 2, "b"))
+                "nose", 10, 1, 2, "b",30))
             Utils.pisosLlenos();
         if (!f.nuevaVivienda("21", "Casa en la montaña", "Torreperojil",
-                "La unica que hay", 1))
+                "La unica que hay", 1,40))
             Utils.pisosLlenos();
         LocalDate l = LocalDate.now();
         if (!f.reservar(f.getUsuarioById("30"), f.getviviendaById(0), 10, 10, 2022, 12, 10, 2022))
@@ -156,6 +159,10 @@ public class PracticaObligatoria3 {
                                 logueado="";
                                 break;
                             }
+                            default:{
+                                System.out.println("No has introducido un valor válido, pulsa ENTER para continuar");
+                                Utils.espearaENTER();
+                            }
 
                         }
                         break;
@@ -179,7 +186,7 @@ public class PracticaObligatoria3 {
                                     System.out.println("Inserta el nuevo nombre de la vivienda (dejalo en blanco para cancelar la operación)");
                                     String nuevoNOmbre=s.nextLine();
                                     if (nuevoNOmbre!=""){
-                                        f.getPropietarioById(logueado).getVivienda().modificaVivienda(nuevoNOmbre);
+                                        f.getPropietarioById(logueado).getVivienda().setNombre(nuevoNOmbre);
                                         System.out.println("La vivienda se ha modificado correctamente, pulsa ENTER para continuar");
                                     }else System.out.println("La vivienda no se ha modificado, pulsa ENTER para continuar");
                                     Utils.espearaENTER();
@@ -227,7 +234,180 @@ public class PracticaObligatoria3 {
                                 Utils.espearaENTER();
                                 break;
                             }
-                            case "6":{//modificar propietario todo
+                            case "6":{
+                                System.out.println("A continuación vas a modificar tu perfil, si deseas cancelar la" +
+                                        " operación deja la clave en blanco y no se modificará nada de tu usuario.");
+                                System.out.println("Introduce tu nuevo nombre");
+                                String nombre=s.nextLine();
+                                System.out.println("Introduce tu nuevo usuario");
+                                String usuario=s.nextLine();
+                                System.out.println("Introduce tu nueva clave (dejala en blanco para cancelar)");
+                                String pass=s.nextLine();
+                                if (pass!="")f.getPropietarioById(logueado).modificaPropietario(nombre,usuario,pass);
+                                System.out.println("Propietario modificado, pulsa ENTER para continuar");
+                                Utils.espearaENTER();
+                                break;
+                            }
+                            case "7":{
+                                logueado="";
+                                break;
+                            }
+                            default:{
+                                System.out.println("No has introducido un valor válido, pulsa ENTER para continuar");
+                                Utils.espearaENTER();
+                            }
+                        }
+                        break;
+                    }
+                    case '3':{
+                        switch (opt){
+                            case "1":{
+                                System.out.println("Bienvenido al menú de búsqueda de usuarios, introduzca la localidad en la que quiere buscar: ");
+                                String localidad=s.nextLine();
+                                System.out.println("Buscando las viviendas disponibles");
+                                Utils.espera();
+                                int encontradas=f.buscarVivienda(localidad);
+                                System.out.println(encontradas);
+                                switch (encontradas){
+                                    case 1:{
+                                        System.out.println("Se han encontrado 1 viviendas en esta localidad,inserte el número correspondiente para reservarla, cualquier otro para cancelar");
+                                        System.out.println("----------1---------\n"+f.getVivienda1());
+                                        if (!s.nextLine().equals("1")){
+                                            System.out.println("La operación ha sido cancelada, pulsa ENTER para continuar");
+                                            Utils.espearaENTER();
+                                        }else {
+                                            if (!f.getVivienda1().reservable()){
+                                                System.out.println("Lo sentimos, en estos momentos esa vivienda no es reservable, pulsa ENTER para continuar");
+                                                Utils.espearaENTER();
+                                            }else {
+                                                System.out.println("La vivienda está reservada en el siguiente tramo:\n"+f.getVivienda1().reservada());
+                                                System.out.print("Desea reservarla (s/n):");
+                                                if (s.nextLine().equalsIgnoreCase("n")){
+                                                    System.out.println("Cancelando la operación, pulsa ENTER para continuar");
+                                                    Utils.espearaENTER();
+                                                }else{
+                                                    LocalDate finicio=null;
+                                                    LocalDate ffin=null;
+                                                    Vivienda v=f.getVivienda1();
+
+                                                    do {
+                                                        System.out.println("Inserta la fecha de inicio de la reserva, con el siguiente formato(dd-mm-aaaa)");
+                                                        String inicio=s.nextLine();
+                                                        finicio= LocalDate.parse(inicio,DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+                                                        System.out.println("Inserta la fecha de fin de la reserva, con el siguiente formato(dd-mm-aaaa)");
+                                                        String fin=s.nextLine();
+                                                        ffin=LocalDate.parse(fin,DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+                                                    }while (!v.setReserva(new Reserva(finicio,ffin,v,f.getUsuarioById(logueado))));
+                                                    System.out.println("La vivienda ha sido reservada correctamente, pulsa ENTER para continuar");
+                                                    Utils.espearaENTER();
+                                                }
+                                            }
+                                        }
+                                        break;
+                                    }
+                                    case 2:{
+                                        System.out.println("Se han encontrado 1 viviendas en esta localidad, inserte el número correspondiente para reservarla, cualquier otro para cancelar");
+                                        System.out.println("----------1----------\n"+f.getVivienda2());
+                                        if (!s.nextLine().equals("1")){
+                                            System.out.println("La operación ha sido cancelada, pulsa ENTER para continuar");
+                                            Utils.espearaENTER();
+                                        }else {
+                                            if (!f.getVivienda2().reservable()){
+                                                System.out.println("Lo sentimos, esa vivienda no es reservable en estos momentos, pulsa ENTER para continuar");
+                                                Utils.espearaENTER();
+                                            }else {
+                                                System.out.println("La vivienda está reservada en el siguiente tramo:\n"+f.getVivienda2().reservada());
+                                                System.out.print("Desea reservarla? (s/n):");
+                                                if (!s.nextLine().equalsIgnoreCase("1")){
+                                                    System.out.println("Cancelando la operación, pulsa ENTER para continuar");
+                                                    Utils.espearaENTER();
+                                                }else {
+                                                    LocalDate finicio;
+                                                    LocalDate ffin;
+                                                    Vivienda v= f.getVivienda2();
+                                                    do {
+                                                        System.out.println("Inserta la fecha de inicio de la reserva, con el siguiente formato(dd-mm-aaaa)");
+                                                        String inicio=s.nextLine();
+                                                        finicio= LocalDate.parse(inicio,DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+                                                        System.out.println("Inserta la fecha de fin de la reserva, con el siguiente formato(dd-mm-aaaa)");
+                                                        String fin=s.nextLine();
+                                                        ffin=LocalDate.parse(fin,DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+                                                    }while (!v.setReserva(new Reserva(finicio,ffin,v,f.getUsuarioById(logueado))));
+                                                }
+                                                System.out.println("La vivienda ha sido reservada correctamente, pulsa ENTER para continuar");
+                                                Utils.espearaENTER();
+                                            }
+                                        }
+                                        break;
+                                    }
+                                    case 3:{
+                                        System.out.println("Se han encontrado 3 viviendas en esta localidad, inserte el número correspondiente, para reservarla, cualquier otro para cncelar");
+                                        System.out.println("----------1----------\n"+f.getVivienda1());
+                                        System.out.println("----------2----------\n"+f.getVivienda2());
+                                        String opcion=s.nextLine();
+                                        switch (opcion){
+                                            case "1":{
+                                                if (!f.getVivienda1().reservable()){
+                                                    System.out.println("Lo sentimos, esa vivienda no es reservable en esos momentos, pulsa ENTER para continuar");
+                                                    Utils.espearaENTER();
+                                                }else {
+                                                    System.out.println("La vivienda está reservada en el siguiente tramo:\n"+f.getVivienda1().reservada());
+                                                    System.out.print("Desea reservarla (s/n):");
+                                                    if (s.nextLine().equalsIgnoreCase("n")){
+                                                        System.out.println("Cancelando la operación, pulsa ENTER para continuar");
+                                                        Utils.espearaENTER();
+                                                    }else{
+                                                        LocalDate finicio=null;
+                                                        LocalDate ffin=null;
+                                                        Vivienda v=f.getVivienda1();
+
+                                                        do {
+                                                            System.out.println("Inserta la fecha de inicio de la reserva, con el siguiente formato(dd-mm-aaaa)");
+                                                            String inicio=s.nextLine();
+                                                            finicio= LocalDate.parse(inicio,DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+                                                            System.out.println("Inserta la fecha de fin de la reserva, con el siguiente formato(dd-mm-aaaa)");
+                                                            String fin=s.nextLine();
+                                                            ffin=LocalDate.parse(fin,DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+                                                        }while (!v.setReserva(new Reserva(finicio,ffin,v,f.getUsuarioById(logueado))));
+                                                        System.out.println("La vivienda ha sido reservada correctamente, pulsa ENTER para continuar");
+                                                        Utils.espearaENTER();
+                                                    }
+                                                }
+                                            }
+                                            case"2":{
+                                                if (!f.getVivienda2().reservable()){
+                                                    System.out.println("Lo sentimos, esa vivienda no es reservable en esos momentos, pulsa ENTER para continuar");
+                                                    Utils.espearaENTER();
+                                                }else {
+                                                    System.out.println("La vivienda está reservada en el siguiente tramo:\n"+f.getVivienda2().reservada());
+                                                    System.out.print("Desea reservarla? (s/n):");
+                                                    if (!s.nextLine().equalsIgnoreCase("1")){
+                                                        System.out.println("Cancelando la operación, pulsa ENTER para continuar");
+                                                        Utils.espearaENTER();
+                                                    }else {
+                                                        LocalDate finicio;
+                                                        LocalDate ffin;
+                                                        Vivienda v= f.getVivienda2();
+                                                        do {
+                                                            System.out.println("Inserta la fecha de inicio de la reserva, con el siguiente formato(dd-mm-aaaa)");
+                                                            String inicio=s.nextLine();
+                                                            finicio= LocalDate.parse(inicio,DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+                                                            System.out.println("Inserta la fecha de fin de la reserva, con el siguiente formato(dd-mm-aaaa)");
+                                                            String fin=s.nextLine();
+                                                            ffin=LocalDate.parse(fin,DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+                                                        }while (!v.setReserva(new Reserva(finicio,ffin,v,f.getUsuarioById(logueado))));
+                                                    }
+                                                    System.out.println("La vivienda ha sido reservada correctamente, pulsa ENTER para continuar");
+                                                    Utils.espearaENTER();
+                                                }
+                                            }
+                                        }
+                                    }
+                                    case 0:
+                                        System.out.println("No se ha encontrado ninguna vivienda en esa localidad, pulsa ENTER para continuar");
+                                        Utils.espearaENTER();
+
+                                }
                                 break;
                             }
                         }

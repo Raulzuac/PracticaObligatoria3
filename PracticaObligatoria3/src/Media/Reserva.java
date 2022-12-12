@@ -2,6 +2,7 @@ package Media;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class Reserva {
     //Atributos
@@ -25,6 +26,9 @@ public class Reserva {
             if (!l2.isBefore(this.ffin) && !l2.isAfter(this.fini))return false;
         }
         return true;
+    }
+    public String fechaReserva(){
+        return fini.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))+"   ----------   "+ffin.format(DateTimeFormatter.ofPattern("dd-MM-yyy"));
     }
     @Override
     public String toString() {

@@ -52,4 +52,10 @@ public class Propietario {
                 ╰────────────────────────────────────────────╯
                 """,nombre,user,pass);
     }
+
+    public void modificaPropietario(String nombre, String usuario, String pass) {
+        this.nombre=nombre;
+        this.user=usuario;
+        this.pass=pass;
+    }
 }

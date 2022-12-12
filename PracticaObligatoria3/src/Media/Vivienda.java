@@ -9,15 +9,18 @@ public class Vivienda {
     private Direccion direccion;
     private Reserva reserva1;
     private Reserva reserva2;
+    private double precioNoche;
     private static int numViviendas=0;
     //Constructores
-    public Vivienda(String nombre,String localidad,String calle,int numero){
+    public Vivienda(String nombre,String localidad,String calle,int numero,int precioNoche){
+        this.precioNoche=precioNoche;
         this.nombre=nombre;
         this.direccion=new Direccion(localidad,calle,numero);
         this.id=numViviendas;
         numViviendas++;
     }
-    public Vivienda(String nombre,String localidad,String calle,int numero,int portal,int piso,String puerta){
+    public Vivienda(String nombre,String localidad,String calle,int numero,int portal,int piso,String puerta,int precioNoche){
+        this.precioNoche=precioNoche;
         this.nombre=nombre;
         this.direccion=new Direccion(localidad,calle,numero,portal,piso,puerta);
         this.id=numViviendas;
@@ -60,10 +63,14 @@ public class Vivienda {
     public int getId() {
         return id;
     }
-    public void modificaVivienda(String nombre){
+    public void setNombre(String nombre){
          this.nombre=nombre;
     }
-
+    public String reservada(){
+        if (reserva1==null && reserva2==null)return "";
+        if (reserva1!=null)return reserva1.fechaReserva();
+        return reserva2.fechaReserva();
+    }
     @Override
     public String toString() {
         return """

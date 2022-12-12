@@ -56,15 +56,15 @@ public class FernanByB {
         return -1;
     }
 
-    public boolean nuevaVivienda(String id, String nombre, String localidad, String calle, int numero) {
+    public boolean nuevaVivienda(String id, String nombre, String localidad, String calle, int numero,int precionoche) {
         switch (tieneVivienda(id)) {
             case 1: {
-                this.vivienda1 = new Vivienda(nombre, localidad, calle, numero);
+                this.vivienda1 = new Vivienda(nombre, localidad, calle, numero, precionoche);
                 propietario1.setVivienda(vivienda1);
                 return true;
             }
             case 2: {
-                this.vivienda2 = new Vivienda(nombre, localidad, calle, numero);
+                this.vivienda2 = new Vivienda(nombre, localidad, calle, numero, precionoche);
                 propietario2.setVivienda(vivienda2);
                 return true;
             }
@@ -72,15 +72,15 @@ public class FernanByB {
         return false;
     }
 
-    public boolean nuevaVivienda(String id, String nombre, String localidad, String calle, int numero, int portal, int piso, String puerta) {
+    public boolean nuevaVivienda(String id, String nombre, String localidad, String calle, int numero, int portal, int piso, String puerta,int precionoche) {
         switch (tieneVivienda(id)) {
             case 1: {
-                this.vivienda1 = new Vivienda(nombre, localidad, calle, numero, portal, piso, puerta);
+                this.vivienda1 = new Vivienda(nombre, localidad, calle, numero, portal, piso, puerta,precionoche);
                 propietario1.setVivienda(vivienda1);
                 return true;
             }
             case 2: {
-                this.vivienda2 = new Vivienda(nombre, localidad, calle, numero, portal, piso, puerta);
+                this.vivienda2 = new Vivienda(nombre, localidad, calle, numero, portal, piso, puerta,precionoche);
                 propietario2.setVivienda(vivienda2);
                 return true;
             }
@@ -125,9 +125,9 @@ public class FernanByB {
     public int buscarVivienda(String localidad) {
         int encontradas = 0;
         if (vivienda1 != null) {
-            if (vivienda1.getLocalidad().equals(localidad)) encontradas = 1;
+            if (vivienda1.getLocalidad().equalsIgnoreCase(localidad)) encontradas = 1;
             if (vivienda2 != null) {
-                if (vivienda2.getLocalidad().equals(localidad)) {
+                if (vivienda2.getLocalidad().equalsIgnoreCase(localidad)) {
                     if (encontradas == 1) encontradas = 3;
                     else encontradas = 2;
                 }
