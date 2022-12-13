@@ -38,8 +38,7 @@ public class Admin {
                 ╭────────────────────────────────────────────╮
                  Nombre:%s
                  Usuario:%s
-                 Pass:%s 
                 ╰────────────────────────────────────────────╯
-                """,nombre,user,pass);
+                """,nombre,user);
     }
 }

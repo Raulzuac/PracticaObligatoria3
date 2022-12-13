@@ -56,7 +56,7 @@ public class FernanByB {
         return -1;
     }
 
-    public boolean nuevaVivienda(String id, String nombre, String localidad, String calle, int numero,int precionoche) {
+    public boolean nuevaVivienda(String id, String nombre, String localidad, String calle, int numero, int precionoche) {
         switch (tieneVivienda(id)) {
             case 1: {
                 this.vivienda1 = new Vivienda(nombre, localidad, calle, numero, precionoche);
@@ -72,15 +72,15 @@ public class FernanByB {
         return false;
     }
 
-    public boolean nuevaVivienda(String id, String nombre, String localidad, String calle, int numero, int portal, int piso, String puerta,int precionoche) {
+    public boolean nuevaVivienda(String id, String nombre, String localidad, String calle, int numero, int portal, int piso, String puerta, int precionoche) {
         switch (tieneVivienda(id)) {
             case 1: {
-                this.vivienda1 = new Vivienda(nombre, localidad, calle, numero, portal, piso, puerta,precionoche);
+                this.vivienda1 = new Vivienda(nombre, localidad, calle, numero, portal, piso, puerta, precionoche);
                 propietario1.setVivienda(vivienda1);
                 return true;
             }
             case 2: {
-                this.vivienda2 = new Vivienda(nombre, localidad, calle, numero, portal, piso, puerta,precionoche);
+                this.vivienda2 = new Vivienda(nombre, localidad, calle, numero, portal, piso, puerta, precionoche);
                 propietario2.setVivienda(vivienda2);
                 return true;
             }
@@ -89,20 +89,20 @@ public class FernanByB {
     }
 
     public String login(String user, String pass) {
-        if (usuario1!=null && usuario1.loginUsuario(user, pass)) return usuario1.getId();
-        if (usuario2!=null && usuario2.loginUsuario(user, pass)) return usuario2.getId();
-        if (propietario1!=null && propietario1.loginPropietario(user, pass)) return propietario1.getId();
-        if (propietario2!=null && propietario2.loginPropietario(user, pass)) return propietario2.getId();
-        if (admin!=null && admin.loginadmin(user, pass)) return admin.getId();
+        if (usuario1 != null && usuario1.loginUsuario(user, pass)) return usuario1.getId();
+        if (usuario2 != null && usuario2.loginUsuario(user, pass)) return usuario2.getId();
+        if (propietario1 != null && propietario1.loginPropietario(user, pass)) return propietario1.getId();
+        if (propietario2 != null && propietario2.loginPropietario(user, pass)) return propietario2.getId();
+        if (admin != null && admin.loginadmin(user, pass)) return admin.getId();
         return "";
     }
 
     public String nameById(String id) {
-        if (usuario1.getId().equals(id)) return usuario1.getNombre();
-        if (usuario2.getId().equals(id)) return usuario2.getNombre();
-        if (propietario1.getId().equals(id)) return propietario1.getNombre();
-        if (propietario2.getId().equals(id)) return propietario2.getNombre();
-        if (admin.getId().equals(id)) return admin.getNombre();
+        if (usuario1 != null && usuario1.getId().equals(id)) return usuario1.getNombre();
+        if (usuario2 != null && usuario2.getId().equals(id)) return usuario2.getNombre();
+        if (propietario1 != null && propietario1.getId().equals(id)) return propietario1.getNombre();
+        if (propietario2 != null && propietario2.getId().equals(id)) return propietario2.getNombre();
+        if (admin != null && admin.getId().equals(id)) return admin.getNombre();
         return "";
     }
 
@@ -117,8 +117,9 @@ public class FernanByB {
         if (propietario2.getId().equals(id)) return propietario2;
         return null;
     }
-    public Admin getAdminById(String id){
-        if (admin!=null && admin.getId().equals(id))return admin;
+
+    public Admin getAdminById(String id) {
+        if (admin != null && admin.getId().equals(id)) return admin;
         return null;
     }
 
@@ -136,30 +137,71 @@ public class FernanByB {
         return encontradas;
     }
 
-    public boolean reservar(Usuario u,Vivienda v, int diai, int mesi, int yeari,int diaf,int mesf,int yearf){
-        if (u.puedeReservar() && v.puedeReservar()){
-            LocalDate fini=LocalDate.of(yeari,mesi,diai);
-            LocalDate ffin=LocalDate.of(yearf,mesf,diaf);
-            Reserva r= new Reserva(fini,ffin,v,u);
-            u.insertarReserva(r);
-            v.setReserva(r);
-            return true;
+    public boolean reservar(Usuario u, Vivienda v, int diai, int mesi, int yeari, int diaf, int mesf, int yearf) {
+        if (u.puedeReservar() && v.puedeReservar()) {
+            LocalDate fini = LocalDate.of(yeari, mesi, diai);
+            LocalDate ffin = LocalDate.of(yearf, mesf, diaf);
+            if (!ocupada(v, fini, ffin)) {
+                Reserva r = new Reserva(fini, ffin, v, u);
+                u.insertarReserva(r);
+                v.setReserva(r);
+                return true;
+            }
         }
         return false;
     }
-    public Vivienda getviviendaById(int id){
-        if (vivienda1.getId()==id)return vivienda1;
-        if (vivienda2.getId()==id)return vivienda2;
+
+    public boolean reservar(Usuario u, Vivienda v, LocalDate fini, LocalDate ffin) {
+        if (u.puedeReservar() && v.puedeReservar()) {
+            if (!ocupada(v, fini, ffin)) {
+                Reserva r = new Reserva(fini, ffin, v, u);
+                u.insertarReserva(r);
+                v.setReserva(r);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean reserbable(Vivienda v, LocalDate fini, LocalDate ffin) {
+        if (!ocupada(v, fini, ffin)) return true;
+        return false;
+    }
+
+    public boolean ocupada(Vivienda v, LocalDate fini, LocalDate ffin) {
+        boolean salida = false;
+        if (v.getReserva1() != null) {
+            if (v.getReserva1().coincide(fini, ffin)) salida = true;
+        }
+        if (v.getReserva2() != null) {
+            if (v.getReserva2().coincide(fini, ffin)) salida = true;
+        }
+        return salida;
+    }
+
+    public boolean ocupada(Reserva r, LocalDate fini, LocalDate ffin) {
+        if (r != null) {
+            if (r.coincide(fini, ffin)) return true;
+        }
+        return false;
+    }
+
+    public Vivienda getviviendaById(int id) {
+        if (vivienda1.getId() == id) return vivienda1;
+        if (vivienda2.getId() == id) return vivienda2;
         return null;
     }
-    public boolean usuariosllenos(){
-        return usuario1!=null && usuario2!=null;
+
+    public boolean usuariosllenos() {
+        return usuario1 != null && usuario2 != null;
     }
-    public boolean propietariosLlenos(){
-        return propietario1!=null && propietario2!=null;
+
+    public boolean propietariosLlenos() {
+        return propietario1 != null && propietario2 != null;
     }
-    public boolean adminLlenos(){
-        return admin!=null;
+
+    public boolean adminLlenos() {
+        return admin != null;
     }
 
     public Vivienda getVivienda1() {
@@ -176,5 +218,13 @@ public class FernanByB {
 
     public Usuario getUsuario2() {
         return usuario2;
+    }
+
+    public Propietario getPropietario1() {
+        return propietario1;
+    }
+
+    public Propietario getPropietario2() {
+        return propietario2;
     }
 }

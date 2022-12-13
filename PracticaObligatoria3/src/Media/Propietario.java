@@ -48,9 +48,8 @@ public class Propietario {
                 ╭────────────────────────────────────────────╮
                  Nombre:%s
                  Usuario:%s
-                 Pass:%s 
                 ╰────────────────────────────────────────────╯
-                """,nombre,user,pass);
+                """,nombre,user);
     }
 
     public void modificaPropietario(String nombre, String usuario, String pass) {

@@ -63,6 +63,11 @@ public class Vivienda {
     public int getId() {
         return id;
     }
+
+    public double getPrecioNoche() {
+        return precioNoche;
+    }
+
     public void setNombre(String nombre){
          this.nombre=nombre;
     }
@@ -71,13 +76,20 @@ public class Vivienda {
         if (reserva1!=null)return reserva1.fechaReserva();
         return reserva2.fechaReserva();
     }
+    public void reserva1ToNull(){
+        reserva1=null;
+    }
+    public void reserva2ToNull(){
+        reserva2=null;
+    }
     @Override
     public String toString() {
         return """
                 ╭────────────────────────────────────────────╮
                  Nombre de la vivienda:%s
-                 %s
+                %s
+                 Precio por noche: %s
                 ╰────────────────────────────────────────────╯
-                """.formatted(nombre,direccion);
+                """.formatted(nombre,direccion,precioNoche);
     }
 }

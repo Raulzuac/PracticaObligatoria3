@@ -1,7 +1,12 @@
 import Media.FernanByB;
+import Media.Reserva;
+
 import java.util.Scanner;
 
 public class Utils {
+    private static String s;
+
+
     public static void usuariosLlenos() {
         System.out.println("No se ha podido crear el usuario porque ya se ha alcanzado el máximo de usuarios." +
                 "\nPulsa ENTER para continuar ");
@@ -109,11 +114,12 @@ public class Utils {
                           Bienvenido: %s
                             
                           1.-Ver mis viviendas en alquiler
-                          2.-Editar mis viviendas
+                          2.-Crear/Editar mis viviendas
                           3.-Ver las reservas de mis viviendas
                           4.-Establecer un periodo de no disponible para una vivienda
                           5.-Ver mi perfil
-                          6.-Cerrar sesion
+                          6.-Modificar mi perfil
+                          7.-Cerrar sesión
                                                                    
                         ╰────────────────────────────────────────────╯
                         """, f.nameById(n));
@@ -137,5 +143,16 @@ public class Utils {
             }
             default:return "";
         }
+    }
+    public static void generarTicketResrerva(Reserva r){
+        System.out.printf("""
+                ╭────────────────────────────────────────────╮
+                         Ticket de la reserva %s
+                  Vivienda: %s
+                  Fecha de la reserva:
+                  %s
+                  Precio total: %s
+                ╰────────────────────────────────────────────╯
+                """,r.getId(),r.getVivienda().getNombre(),r.fechaReserva(),r.getPrecioTotal());
     }
 }

@@ -34,18 +34,18 @@ public class Direccion {
     public String toString() {
         if (casa){
             return """
-                 Localidad: %s
-                 Calle: %s
-                 Numero: %d
+                  Localidad: %s
+                  Calle: %s
+                  Numero: %d
                 """.formatted(localidad,calle,numero);
         }
         return """
-                 Localidad: %s
-                 Calle: %s
-                 Numero: %d
-                 Portal: %d
-                 Piso: %d
-                 Puerta: %s
+                  Localidad: %s
+                  Calle: %s
+                  Numero: %d
+                  Portal: %d
+                  Piso: %d
+                  Puerta: %s
                 """.formatted(localidad,calle,numero,portal,piso,puerta);
     }
 }

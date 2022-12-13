@@ -37,6 +37,11 @@ public class Usuario {
         reserva2=r;
         return true;
     }
+    public void modificar(String nombre,String user,String pass){
+        this.nombre=nombre;
+        this.user=user;
+        this.pass=pass;
+        }
     public boolean puedeReservar(){
         if (reserva1==null || reserva2==null)return true;
         return false;
@@ -64,14 +69,21 @@ public class Usuario {
         return this.nombre;
     }
 
+    public Reserva getReserva1() {
+        return reserva1;
+    }
+
+    public Reserva getReserva2() {
+        return reserva2;
+    }
+
     @Override
     public String toString() {
         return String.format("""
                 ╭────────────────────────────────────────────╮
                  Nombre:%s
                  Usuario:%s
-                 Pass:%s 
                 ╰────────────────────────────────────────────╯
-                """,nombre,user,pass);
+                """,nombre,user);
     }
 }
