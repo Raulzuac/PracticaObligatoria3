@@ -10,21 +10,24 @@ public class Vivienda {
     private Reserva reserva1;
     private Reserva reserva2;
     private double precioNoche;
+    private int huespedes;
     private static int numViviendas=0;
     //Constructores
-    public Vivienda(String nombre,String localidad,String calle,int numero,int precioNoche){
+    public Vivienda(String nombre,String localidad,String calle,int numero,int precioNoche,int huespedes){
         this.precioNoche=precioNoche;
         this.nombre=nombre;
         this.direccion=new Direccion(localidad,calle,numero);
         this.id=numViviendas;
         numViviendas++;
+        this.huespedes=huespedes;
     }
-    public Vivienda(String nombre,String localidad,String calle,int numero,int portal,int piso,String puerta,int precioNoche){
+    public Vivienda(String nombre,String localidad,String calle,int numero,int portal,int piso,String puerta,int precioNoche,int huespedes){
         this.precioNoche=precioNoche;
         this.nombre=nombre;
         this.direccion=new Direccion(localidad,calle,numero,portal,piso,puerta);
         this.id=numViviendas;
         numViviendas++;
+        this.huespedes=huespedes;
     }
 
     public String getNombre() {
@@ -82,6 +85,11 @@ public class Vivienda {
     public void reserva2ToNull(){
         reserva2=null;
     }
+
+    public int getHuespedes() {
+        return huespedes;
+    }
+
     @Override
     public String toString() {
         return """
@@ -89,7 +97,8 @@ public class Vivienda {
                  Nombre de la vivienda:%s
                 %s
                  Precio por noche: %s
+                 Maximo huespedes: %s
                 ╰────────────────────────────────────────────╯
-                """.formatted(nombre,direccion,precioNoche);
+                """.formatted(nombre,direccion,precioNoche,huespedes);
     }
 }

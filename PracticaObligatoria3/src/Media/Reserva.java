@@ -56,8 +56,9 @@ public class Reserva {
                   Fecha de la reserva:
                   %s
                   Precio total: %s
+                  Huespedes: %s
                 ╰────────────────────────────────────────────╯
-                """,id,vivienda.getNombre(),fechaReserva(),getPrecioTotal());
+                """,id,vivienda.getNombre(),fechaReserva(),getPrecioTotal(),vivienda.getHuespedes());
         //return "Reserva de la vivienda "+vivienda.getNombre()+",por "+usuario.getNombre()+" desde la fecha: "+fini.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))+" hasta la fecha: "+ffin.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
     }
 }

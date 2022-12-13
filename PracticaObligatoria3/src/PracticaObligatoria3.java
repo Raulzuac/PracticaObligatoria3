@@ -24,11 +24,10 @@ public class PracticaObligatoria3 {
         if (!f.nuevoPropietario("Jose", "jose", "pass")) Utils.propietariosLlenos();
         if (!f.nuevoPropietario("Jesus", "jesus", "pass")) Utils.propietariosLlenos();
         if (!f.nuevoAdmin("Admin", "admin", "pass")) Utils.adminLlenos();
-        if (!f.nuevaVivienda("20", "Pisito en la playa", "Torremolinos",
-                "nose", 10, 1, 2, "b", 30))
+        if (!f.nuevaVivienda("20", "Pisito en la playa", "Torremolinos", "nose", 10, 1, 2, "b", 30,5))
             Utils.pisosLlenos();
         if (!f.nuevaVivienda("21", "Casa en la montaña", "Torremolinos",
-                "La unica que hay", 1, 40))
+                "La unica que hay", 1, 40,4))
             Utils.pisosLlenos();
         LocalDate l = LocalDate.now();
         if (!f.reservar(f.getUsuarioById("30"), f.getviviendaById(0), 10, 10, 2022, 12, 10, 2022))
@@ -250,7 +249,9 @@ public class PracticaObligatoria3 {
                                         int numero = Integer.parseInt(s.nextLine());
                                         System.out.print("Introduce el precio por noche: ");
                                         int precioNoche = Integer.parseInt(s.nextLine());
-                                        f.getPropietarioById(logueado).setVivienda(new Vivienda(nombre, localidad, calle, numero, precioNoche));
+                                        System.out.println("Introduce el número máximo de huespedes");
+                                        int huespedes=Integer.parseInt(s.nextLine());
+                                        f.getPropietarioById(logueado).setVivienda(new Vivienda(nombre, localidad, calle, numero, precioNoche,huespedes));
                                         System.out.println("La vivienda ha sido creada, pulsa ENTER para continuar");
                                         Utils.espearaENTER();
                                     } else {
@@ -270,8 +271,10 @@ public class PracticaObligatoria3 {
                                         String puerta = s.nextLine();
                                         System.out.print("Introduce el precio por noche: ");
                                         int precio = Integer.parseInt(s.nextLine());
+                                        System.out.println("Introduce el número máximo de huespedes");
+                                        int huespedes=Integer.parseInt(s.nextLine());
                                         f.getPropietarioById(logueado).setVivienda(new Vivienda(nombre, localidad, calle, num
-                                                , portal, piso, puerta, precio));
+                                                , portal, piso, puerta, precio,huespedes));
                                         System.out.println("La vivienda ha sido creada, pulsa ENTER para continuar");
                                         Utils.espearaENTER();
                                     }

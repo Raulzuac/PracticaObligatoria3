@@ -56,15 +56,15 @@ public class FernanByB {
         return -1;
     }
 
-    public boolean nuevaVivienda(String id, String nombre, String localidad, String calle, int numero, int precionoche) {
+    public boolean nuevaVivienda(String id, String nombre, String localidad, String calle, int numero, int precionoche,int huespedes) {
         switch (tieneVivienda(id)) {
             case 1: {
-                this.vivienda1 = new Vivienda(nombre, localidad, calle, numero, precionoche);
+                this.vivienda1 = new Vivienda(nombre, localidad, calle, numero, precionoche,huespedes);
                 propietario1.setVivienda(vivienda1);
                 return true;
             }
             case 2: {
-                this.vivienda2 = new Vivienda(nombre, localidad, calle, numero, precionoche);
+                this.vivienda2 = new Vivienda(nombre, localidad, calle, numero, precionoche, huespedes);
                 propietario2.setVivienda(vivienda2);
                 return true;
             }
@@ -72,15 +72,15 @@ public class FernanByB {
         return false;
     }
 
-    public boolean nuevaVivienda(String id, String nombre, String localidad, String calle, int numero, int portal, int piso, String puerta, int precionoche) {
+    public boolean nuevaVivienda(String id, String nombre, String localidad, String calle, int numero, int portal, int piso, String puerta, int precionoche,int huespedes) {
         switch (tieneVivienda(id)) {
             case 1: {
-                this.vivienda1 = new Vivienda(nombre, localidad, calle, numero, portal, piso, puerta, precionoche);
+                this.vivienda1 = new Vivienda(nombre, localidad, calle, numero, portal, piso, puerta, precionoche,huespedes);
                 propietario1.setVivienda(vivienda1);
                 return true;
             }
             case 2: {
-                this.vivienda2 = new Vivienda(nombre, localidad, calle, numero, portal, piso, puerta, precionoche);
+                this.vivienda2 = new Vivienda(nombre, localidad, calle, numero, portal, piso, puerta, precionoche,huespedes);
                 propietario2.setVivienda(vivienda2);
                 return true;
             }
