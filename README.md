@@ -15,6 +15,8 @@ Autores:
 Para instalar la aplicación tenemos un requisito, tener instalado java jdk19, que se puede 
 encontrar en el siguiente enlace [Java](https://www.oracle.com/java/technologies/javase/jdk19-archive-downloads.html)
 
+Una vez tengamos java descargado podemos descargar la carpeta del proyecto y descomprimirla donde queramos, esta comprimida en zip, por lo que el compresor de windows funciona.
+
 Nos descargaremos el proyecto y simplemente tendremos que extrarlo en cualquier lugar y ejecutar
 el archivo fernanByB
 
