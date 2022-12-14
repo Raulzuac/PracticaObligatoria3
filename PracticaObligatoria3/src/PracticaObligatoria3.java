@@ -29,8 +29,7 @@ public class PracticaObligatoria3 {
         if (!f.nuevaVivienda("21", "Casa en la montaña", "Torremolinos",
                 "La unica que hay", 1, 40,4))
             Utils.pisosLlenos();
-        LocalDate l = LocalDate.now();
-        if (!f.reservar(f.getUsuarioById("30"), f.getviviendaById(0), 10, 10, 2022, 12, 10, 2022))
+        LocalDate l = LocalDate.now();if (!f.reservar(f.getUsuarioById("30"), f.getviviendaById(0), 10, 10, 2022, 12, 10, 2022))
             Utils.noPudoReservar();
 
         //Bucle en el que funciona el programa
